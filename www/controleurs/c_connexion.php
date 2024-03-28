@@ -1,4 +1,5 @@
 <?php
+
 $action = lireDonneeUrl('action', 'demandeConnexion');
 
 switch($action){
@@ -10,7 +11,11 @@ switch($action){
 	case 'valideConnexion':{
 		$login = lireDonneePost('login');
 		$mdp = lireDonneePost('mdp');
+		$hash = password_hash($mdp, PASSWORD_ARGON2ID);
 		$visiteur = $pdo->getInfosVisiteur($login,$mdp);
+
+		//faire une requete sql pour recuperer le hash?!?
+
 		if(!is_array( $visiteur)){
 			ajouterErreur("Login ou mot de passe incorrect", $tabErreurs);
 		  include("vues/v_debutContenu.php");
@@ -18,6 +23,7 @@ switch($action){
 			include("vues/v_connexion.php");
 		}
 		else{
+			//faire getinfosvisiteurs et connecter 
 			$id = $visiteur['id'];
 			$nom =  $visiteur['nom'];
 			$prenom = $visiteur['prenom'];

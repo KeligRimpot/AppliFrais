@@ -28,6 +28,13 @@ class PdoGsb {
     public function _destruct(){
         $this->monPdo = null;
     }
+
+
+    public function getHash($mdp){
+        //récuperer lehash
+    }
+
+
   /**
    * Retourne les informations d'un visiteur
    
