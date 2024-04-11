@@ -20,5 +20,3 @@ foreach ($mdps as $ligne){
     $reponse2 -> execute([$hash, $id]);
 
 }
-
-?>
