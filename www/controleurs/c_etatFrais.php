@@ -36,7 +36,16 @@ else  { // accès autorisé
     		$nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
     		$dateModif =  $lesInfosFicheFrais['dateModif'];
     		$dateModif =  dateAnglaisVersFrancais($dateModif);
-    		include("vues/v_etatFrais.php");    	
+    		include("vues/v_etatFrais.php");   
+			
+			
+
+
+			// case 'afficherSynthese':
+			// 	include("vues/v_synthese.php");
+
+
+		
     }
 }
 ?>
