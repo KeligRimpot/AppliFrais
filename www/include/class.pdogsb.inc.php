@@ -28,6 +28,14 @@ class PdoGsb {
     public function _destruct(){
         $this->monPdo = null;
     }
+
+
+    public function getHash($mdp){
+        //récuperer lehash
+
+    }
+
+
   /**
    * Retourne les informations d'un visiteur
    
@@ -36,14 +44,18 @@ class PdoGsb {
    * @return array  l'id, le nom et le prénom sous la forme d'un tableau associatif 
   */
     public function getInfosVisiteur($login, $mdp){
-  	    $req = "select id, nom, prenom from Visiteur where login = ? and mdp = ?";
+  	    $req = "select id, nom, prenom, mdp from Visiteur where login = ?"; // and mdp = ?
+        // J'ai ajouté dans la requête le mdp, pour pouvoir récupérer le hash de la bdd et le comparer
   	    $cmd = $this->monPdo->prepare($req);
         $cmd->bindValue(1, $login);
-        $cmd->bindValue(2, $mdp);
+        // $cmd->bindValue(2, $mdp);
         $cmd->execute();
   	    $ligne = $cmd->fetch();
   	    return $ligne;
     } 
+
+
+    
   /**
    * Retourne sous forme d'un tableau associatif toutes les lignes de frais hors forfait
    * concernées par les deux arguments   
