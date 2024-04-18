@@ -327,4 +327,29 @@ class PdoGsb {
         $cmd->bindValue("mois", $mois);
         $cmd->execute();        
     }
+
+
+
+
+    /**
+     * Récupère les données nécessaires à l'affichage de la synthèse des fiches de frais
+     * 
+     * @param string idVisiteur
+     */
+    public function getDataFicheSynthese($idVisiteur){
+        $req = "SELECT mois, montantValide, etat.libelle
+        FROM visiteur
+        JOIN fichefrais
+        ON visiteur.id = fichefrais.idVisiteur
+        JOIN etat
+        ON fichefrais.idEtat = etat.id
+        WHERE visiteur.id = ?;";
+        $cmd = $this->monPdo->prepare($req);
+        $cmd->bindValue(1, $idVisiteur);
+        $cmd->execute();
+        $lesLignes = $cmd->fetchAll();
+        $cmd->closeCursor();
+        return $lesLignes;
+  }
+
 }

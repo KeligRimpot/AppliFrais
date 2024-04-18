@@ -9,6 +9,8 @@ if ( ! estConnecte() ) {
 }
 
 else  { // accès autorisé 
+    $action = lireDonneeUrl('action', 'afficherSynthese');
+    $idVisiteur = $_SESSION['idVisiteur'];
+    $dataSynthese = $pdo -> getDataFicheSynthese('a17');
     include("vues/v_synthese.php");
-    
 }
