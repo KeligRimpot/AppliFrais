@@ -337,13 +337,20 @@ class PdoGsb {
      * @param string idVisiteur
      */
     public function getDataFicheSynthese($idVisiteur){
-        $req = "SELECT mois, montantValide, etat.libelle
+        $req = "SELECT fichefrais.mois, SUM(montantValide) AS montantValideTotal, etat.libelle, SUM(lignefraishorsforfait.montant) AS montantEngageTotal
         FROM visiteur
         JOIN fichefrais
         ON visiteur.id = fichefrais.idVisiteur
         JOIN etat
         ON fichefrais.idEtat = etat.id
-        WHERE visiteur.id = ?;";
+        JOIN lignefraishorsforfait
+        ON visiteur.id = lignefraishorsforfait.idVisiteur
+        AND fichefrais.mois = lignefraishorsforfait.mois
+        WHERE visiteur.id = ?
+        GROUP BY fichefrais.mois, fichefrais.idVisiteur
+        ORDER BY fichefrais.mois DESC;";
+        //lignefraishorsforfait.libelle
+
         $cmd = $this->monPdo->prepare($req);
         $cmd->bindValue(1, $idVisiteur);
         $cmd->execute();

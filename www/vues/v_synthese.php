@@ -3,6 +3,7 @@
   	   <caption></caption>
              <tr>
                 <th class="date">Date</th>
+                <!-- <th class='libelle'>Libellé</th> -->
                 <th class="etat">Etat</th>
                 <th class='montantEngage'>Montant engagé</th>
                 <th class='montantValide'>Montant validé</th>
@@ -13,22 +14,21 @@
         <?php
           foreach ( $dataSynthese as $ligne ) {
       		    $date = $ligne['mois'];
-			    $libelle = $ligne['libelle'];
-                $montantValide = $ligne['montantValide'];
-                
+                // Séparer l'année et le mois par "/"
                 $annee = substr($date, 0, 4);
                 $mois = substr($date, 4, 2);
-                // Séparer l'année et le mois par "/"
-                $date_separe = $annee . "/" . $mois;
-                // Afficher la date séparée
-                $date = $date_separe;
-                
-			    // $montant = $ligne['montant'];
+                $date = $annee . "/" . $mois;
+
+                //$libelle = $ligne['lignefraishorsforfait.libelle'];
+			       $etat = $ligne['libelle'];
+                $montantValide = $ligne['montantValideTotal'];
+                $montant = $ligne['montantEngageTotal'];
 		?>
              <tr>
-                <td><?php echo $date ?></td>
-                <td><?php echo $libelle ?></td>
-                <td><?php echo $montant ?></td>
+                <td><?= $date ?></td>
+                <td><?= $etat ?></td>
+                <td><?= $montant ?></td>
+                <td><?= $montantValide ?></td>
              </tr>
         <?php 
           }
