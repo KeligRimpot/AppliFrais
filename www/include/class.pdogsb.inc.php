@@ -349,7 +349,6 @@ class PdoGsb {
         WHERE visiteur.id = ?
         GROUP BY fichefrais.mois, fichefrais.idVisiteur
         ORDER BY fichefrais.mois DESC;";
-        //lignefraishorsforfait.libelle
 
         $cmd = $this->monPdo->prepare($req);
         $cmd->bindValue(1, $idVisiteur);

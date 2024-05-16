@@ -3,7 +3,6 @@
   	   <caption></caption>
              <tr>
                 <th class="date">Date</th>
-                <!-- <th class='libelle'>Libellé</th> -->
                 <th class="etat">Etat</th>
                 <th class='montantEngage'>Montant engagé</th>
                 <th class='montantValide'>Montant validé</th>
@@ -19,7 +18,7 @@
                 $mois = substr($date, 4, 2);
                 $date = $annee . "/" . $mois;
 
-                //$libelle = $ligne['lignefraishorsforfait.libelle'];
+                // On récupère les autres variables
 			       $etat = $ligne['libelle'];
                 $montantValide = $ligne['montantValideTotal'];
                 $montant = $ligne['montantEngageTotal'];
