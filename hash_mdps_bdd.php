@@ -1,4 +1,8 @@
 <?php
+
+// Script qui remplace les mdps en clair par des hashs ARGON2ID dans la bdd
+
+
 $bdd = new PDO(
     'mysql:host=localhost;dbname=gsbfrais',
     'userGsb',

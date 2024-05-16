@@ -9,7 +9,7 @@ if ( ! estConnecte() ) {
 }
 else  { // accès autorisé
     $action = lireDonneeUrl('action', 'selectionnerMois');
-    $idVisiteur = $_SESSION['idVisiteur'];
+    $idVisiteur = $_SESSION['idVisiteur']; 
     switch($action){
     	default :
     		$lesMois=$pdo->getLesMoisDisponibles($idVisiteur);
@@ -36,7 +36,11 @@ else  { // accès autorisé
     		$nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
     		$dateModif =  $lesInfosFicheFrais['dateModif'];
     		$dateModif =  dateAnglaisVersFrancais($dateModif);
-    		include("vues/v_etatFrais.php");    	
+    		include("vues/v_etatFrais.php");
+			
+
+
+		
     }
 }
 ?>

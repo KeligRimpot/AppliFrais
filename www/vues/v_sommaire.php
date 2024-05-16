@@ -16,6 +16,11 @@
            <li class="smenu">
               <a href="index.php?uc=etatFrais&amp;action=selectionnerMois" title="Consultation de mes fiches de frais">Mes fiches de frais</a>
            </li>
+
+           <li class="smenu">
+              <a href="index.php?uc=syntheseFrais&amp;action=afficherSynthese" title="Consultation d'une synthese par mois">Synthèse fiches de frais</a>
+           </li>
+
  	         <li class="smenu">
               <a href="index.php?uc=connexion&amp;action=deconnexion" title="Se déconnecter">Déconnexion</a>
            </li>
